@@ -18,13 +18,10 @@ import java.time.temporal.ChronoUnit;
 
 @SpringBootApplication
 public class RunnersApplication {
-
 	private static final Logger log = LoggerFactory.getLogger(RunnersApplication.class);
-
 	public static void main(String[] args) {
 		SpringApplication.run(RunnersApplication.class, args);
 	}
-
 	@Bean
 	CommandLineRunner  runner(){
 		return args -> {
@@ -32,5 +29,4 @@ public class RunnersApplication {
 			log.info("Run: " + run);
 		};
 	}
-
 }
