@@ -1,8 +1,9 @@
 package com.jvapp.runners.run;
 
 import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
-
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -10,10 +11,19 @@ import java.util.List;
 
 @Repository
 public class RunRepository {
+
+    private static final Logger log = LoggerFactory.getLogger(RunRepository.class);
     private List<Run> runs = new ArrayList<>();
 
     List<Run> findAll(){
         return runs;
+    }
+
+    Run findById(Integer id){
+        return runs.stream()
+                .filter(run -> run.id() == id)
+                .findFirst()
+                .get();
     }
 
     @PostConstruct
